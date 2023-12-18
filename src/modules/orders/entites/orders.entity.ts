@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
+//entities
+import { Products } from 'src/modules/products/entities/products.entity';
 
 @Entity()
 export class Orders {
@@ -10,4 +18,7 @@ export class Orders {
   totalPrice: string;
   //relación de uno a muchos con el modelo de usuarios
   //relación de muchos a muchos con el modelo de productos
+  @ManyToMany(() => Products, { eager: true })
+  @JoinTable()
+  products: Products[];
 }

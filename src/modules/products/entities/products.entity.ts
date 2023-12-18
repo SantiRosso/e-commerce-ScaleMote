@@ -1,5 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  ManyToMany,
+} from 'typeorm';
+//entities
 import { Categories } from 'src/modules/categories/entities/categories.entity';
+import { Orders } from 'src/modules/orders/entites/orders.entity';
 
 @Entity()
 export class Products {
@@ -16,5 +24,7 @@ export class Products {
   //relación de uno a muchos con el modelo de categoría
   @ManyToOne(() => Categories, (category) => category.products)
   category: Categories;
-  //relación de muchos a muchos con el modelo de productos
+  //relación de muchos a muchos con el modelo de pedidos
+  @ManyToMany(() => Orders, (order) => order.products)
+  orders: Orders[];
 }
