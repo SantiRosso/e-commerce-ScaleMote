@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Categories } from 'src/modules/categories/entities/categories.entity';
 
 @Entity()
 export class Products {
@@ -13,5 +14,7 @@ export class Products {
   @Column()
   stock: number;
   //relación de uno a muchos con el modelo de categoría
-  //relación de uno a muchos con el modelo de categoría
+  @ManyToOne(() => Categories, (category) => category.products)
+  category: Categories;
+  //relación de muchos a muchos con el modelo de productos
 }

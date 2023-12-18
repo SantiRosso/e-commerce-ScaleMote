@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Products } from 'src/modules/products/entities/products.entity';
 
 @Entity()
 export class Categories {
@@ -7,4 +8,6 @@ export class Categories {
   @Column()
   name: string;
   //relación de uno a muchos con el modelo de productos
+  @OneToMany(() => Products, (product) => product.category)
+  products: Products[];
 }
