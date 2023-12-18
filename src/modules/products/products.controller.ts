@@ -12,7 +12,7 @@ import { ProductsService } from './products.service';
 import { CreateProductDto } from './dtos/createProduct.dto';
 import { UpdateProductDto } from './dtos/updateProduct.dto';
 
-@Controller('users')
+@Controller('products')
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
 
@@ -27,8 +27,8 @@ export class ProductsController {
   }
 
   @Post()
-  async create(@Body() newUser: CreateProductDto) {
-    return await this.productsService.create(newUser);
+  async create(@Body() newProduct: CreateProductDto) {
+    return await this.productsService.create(newProduct);
   }
 
   @Patch(':id')
