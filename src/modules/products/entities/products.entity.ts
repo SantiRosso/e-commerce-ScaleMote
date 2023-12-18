@@ -13,4 +13,5 @@ export class Products {
   @Column()
   stock: number;
   //relación de uno a muchos con el modelo de categoría
+  //relación de uno a muchos con el modelo de categoría
 }
