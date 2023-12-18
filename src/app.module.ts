@@ -4,6 +4,7 @@ require('dotenv').config();
 const { DB_PASSWORD, DB_PORT, DB_USER, DB_NAME, DB_HOST } = process.env;
 //modules
 import { UsersModule } from './modules/users/users.module';
+import { ProductsModule } from './modules/products/products.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { UsersModule } from './modules/users/users.module';
       synchronize: true,
     }),
     UsersModule,
+    ProductsModule,
   ],
   controllers: [],
   providers: [],
